@@ -12,30 +12,38 @@ char *disemvowel(char *str) {
   size = strlen(str);
   char *result;
   for(i=0; i<size; i++){
-    if(str[i]=='a'){
+    if(str[i]=='a' || str[i]=='A'){
       str[i] = 0;
     }
-    else if(str[i]=='e'){
+    else if(str[i]=='e'|| str[i]=='E'){
       str[i] = 0;
     }
-    else if(str[i]=='i'){
+    else if(str[i]=='i' || str[i]=='I'){
       str[i] = 0;
     }
-    else if(str[i]=='o'){
+    else if(str[i]=='o' || str[i]=='O'){
       str[i] = 0;
     }
-    else if(str[i]=='u'){
+    else if(str[i]=='u' || str[i]=='U'){
       str[i] = 0;
     }
     else counter++;
   }
-  result = (char*)calloc(counter+1, sizeof(char));
-  for (i=0; i<size; i++){
-    if (str[i]!=0){
-      result[counter2]=str[i];
-      counter2++;
+
+  if(counter !=0){
+    result = (char*)calloc(counter+1, sizeof(char));
+    for (i=0; i<size; i++){
+      if (str[i]!=0){
+        result[counter2]=str[i];
+        counter2++;
+      }
     }
+    result[counter2]='\0';
   }
-  result[counter2]='\0';
+  else{
+    result = (char*)calloc(2, sizeof(char));
+    result[1]='\0';
+  } 
+
   return result;
 }

@@ -3,7 +3,9 @@
 #include "disemvowel.h"
 
 TEST(Disemvowel, HandleEmptyString) {
-  ASSERT_STREQ("", disemvowel((char*) ""));
+  char *str =  disemvowel((char*) "");
+  ASSERT_STREQ("", str);
+  free(str);
 }
 
 TEST(Disemvowel, HandleNoVowels) {

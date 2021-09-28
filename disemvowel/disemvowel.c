@@ -11,39 +11,46 @@ char *disemvowel(char *str) {
   int size;
   size = strlen(str);
   char *result;
+  char *vowel;
+  if (size != 0){
+    vowel = (char*)calloc(size, sizeof(char));
+  }
+  else vowel = strdup("");
   for(i=0; i<size; i++){
     if(str[i]=='a' || str[i]=='A'){
-      str[i] = 0;
+      vowel[i] = 0;
     }
     else if(str[i]=='e'|| str[i]=='E'){
-      str[i] = 0;
+      vowel[i] = 0;
     }
     else if(str[i]=='i' || str[i]=='I'){
-      str[i] = 0;
+      vowel[i] = 0;
     }
     else if(str[i]=='o' || str[i]=='O'){
-      str[i] = 0;
+      vowel[i] = 0;
     }
     else if(str[i]=='u' || str[i]=='U'){
-      str[i] = 0;
+      vowel[i] = 0;
     }
-    else counter++;
+    else {
+      vowel[i] = str[i];
+      counter++;
+    }
   }
 
   if(counter !=0){
     result = (char*)calloc(counter+1, sizeof(char));
     for (i=0; i<size; i++){
-      if (str[i]!=0){
-        result[counter2]=str[i];
+      if (vowel[i]!=0){
+        result[counter2]=vowel[i];
         counter2++;
       }
     }
     result[counter2]='\0';
   }
   else{
-    result = (char*)calloc(2, sizeof(char));
-    result[1]='\0';
+    result=strdup("");
   } 
-
+  free(vowel);
   return result;
 }

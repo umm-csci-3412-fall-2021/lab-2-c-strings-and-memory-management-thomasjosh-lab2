@@ -12,10 +12,15 @@ char *disemvowel(char *str) {
   size = strlen(str);
   char *result;
   char *vowel;
+  /* Checks to see is the string given is 0, if not 0 makes an array of 
+  the same size as the string, if 0 it makes and empty string array */
   if (size != 0){
     vowel = (char*)calloc(size, sizeof(char));
   }
   else vowel = strdup("");
+
+  /* Replaces all vowels with '0', increases counter to remember how big the 
+  new string will be whenever there is a consonant */
   for(i=0; i<size; i++){
     if(str[i]=='a' || str[i]=='A'){
       vowel[i] = 0;
@@ -38,6 +43,8 @@ char *disemvowel(char *str) {
     }
   }
 
+/*If counter not 0 then add the consonants to a new array of size counter+1, 
+else creates an empty string array since no consonants */
   if(counter !=0){
     result = (char*)calloc(counter+1, sizeof(char));
     for (i=0; i<size; i++){
